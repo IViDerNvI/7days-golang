@@ -17,6 +17,7 @@ import (
 // Engine is the uni handler for all requests
 type Engine struct{}
 
+// 通过 case 指定不同的处理逻辑
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	switch req.URL.Path {
 	case "/":

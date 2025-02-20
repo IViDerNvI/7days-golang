@@ -13,6 +13,8 @@ import (
 )
 
 func main() {
+	// http 包只能对特定路径指定特定处理函数
+	// handler 是一个接受 Request 并向 Response 写入的函数
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/hello", helloHandler)
 	log.Fatal(http.ListenAndServe(":9999", nil))

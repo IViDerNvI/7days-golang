@@ -10,6 +10,7 @@ type HandlerFunc func(*Context)
 
 // Engine implement the interface of ServeHTTP
 type Engine struct {
+	// map 封装成为 router
 	router *router
 }
 
@@ -39,6 +40,7 @@ func (engine *Engine) Run(addr string) (err error) {
 }
 
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	// 封装 context 后交给 router 处理
 	c := newContext(w, req)
 	engine.router.handle(c)
 }

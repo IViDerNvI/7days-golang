@@ -10,6 +10,8 @@ type HandlerFunc func(*Context)
 
 // Engine implement the interface of ServeHTTP
 type (
+	// RouterGroup 表示路由组
+	// 每个组包含几个中间件，Engine 指向最顶层的路由组
 	RouterGroup struct {
 		prefix      string
 		middlewares []HandlerFunc // support middleware
@@ -17,6 +19,7 @@ type (
 		engine      *Engine       // all groups share a Engine instance
 	}
 
+	// Engine 是顶级的路由组
 	Engine struct {
 		*RouterGroup
 		router *router

@@ -23,6 +23,7 @@ func trace(message string) string {
 	return str.String()
 }
 
+// Recovery 在最顶层设置 defer ，保证 panic 发生时回到此处进行处理
 func Recovery() HandlerFunc {
 	return func(c *Context) {
 		defer func() {
